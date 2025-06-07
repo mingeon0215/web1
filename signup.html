@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <style>
+         * {
+            box-sizing: border-box;
+         }
+
+         body {
+            background-color: rgb(240, 240, 240);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+         }
+
+         .wrapper {
+            padding: 16px;
+            width: 500px;
+            background-color: white;
+            border-radius: 10px;
+         }
+
+         .logo {
+            display: flex;
+            justify-content: center;
+         }
+
+         hr {
+            border: 1px #e6e6e6 solid;
+         }
+
+         .profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+         }
+
+         a {
+            text-decoration: none;
+         }
+
+         strong {
+            width: 80px;
+            display: block;
+         }
+         
+         h3 {
+            margin: 4px 0;
+            font-size: 18px;
+            color: rgb(54, 54, 54);
+         }
+
+         input[type="text"], input[type="password"] {
+            height: 30px;
+            border: 1px #ccc solid;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 12px;
+            padding: 0px 8px;
+         }
+
+         input[type="date"] {
+            height: 30px;
+            border: 1px #ccc solid;
+            width: 200px;
+            border-radius: 4px;
+            font-size: 12px;
+            padding: 0px 8px;
+         }
+
+         input[type="reset"], button {
+            height: 30px;
+            border: 1px #d8d8d8 solid;
+            width: 48%;
+            border-radius: 4px;
+            font-size: 12px;
+            padding: 0px 8px;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="wrapper">
+         <h1>회원가입 페이지</h1>
+
+         <hr>
+
+         <form style="padding: 10px 0">
+            <div>
+               <h3>아이디</h3>
+               <input type="text" />
+            </div>
+
+            <br />
+
+            <div>
+               <h3>패스워드</h3>
+               <input type="password" />
+            </div>
+
+            <br />
+
+            <div>
+               <h3>생년월일</h3>
+               <input type="date" />
+            </div>
+
+            <br />
+
+            <div>
+               <h3>성별</h3>
+               <span>남성<input type="radio" /></span>
+               <span>여성<input type="radio" /></span>
+            </div>
+
+            <br />
+
+            <div>
+               <h3>관심사</h3>
+               <p style="font-size: 14px; color: gray">관심사를 선택해주세요.</p>
+               <span>스포츠<input type="checkbox" /></span>
+               <span>사진<input type="checkbox" /></span>
+               <span>음식<input type="checkbox" /></span>
+               <span>패션<input type="checkbox" /></span>
+               <span>독서<input type="checkbox" /></span>
+               <span>음악<input type="checkbox" /></span>
+            </div>
+
+            <br />
+
+            <div>
+               <h3>사진 첨부</h3>
+               <input type="file" />
+            </div>
+
+            <br />
+
+            <input type="reset" />
+            <button>회원가입</button>
+         </form>
+      </div>
+   </body>
+</html>
