@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인페이지</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #fafafa;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            letter-spacing: 2px;
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            padding: 6px 14px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .menu a:hover {
+            background: #e0e0e0;
+        }
+        .main-content {
+            max-width: 700px;
+            margin: 40px auto 0 auto;
+            padding: 32px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            text-align: center;
+        }
+        .main-content h1 {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+            color: #222;
+        }
+        .main-content p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="main.html">
+            <div class="logo">김민건 소개 페이지</div>
+        </a>
+        <nav class="menu">
+            <a href="introduction.html">자기소개</a>
+            <a href="signup.html">회원가입</a>
+            <a href="event.html">이벤트목록</a>
+        </nav>
+    </div>
+    <div class="main-content">
+        <h1>메인페이지에 오신 것을 환영합니다!</h1>
+        <p>자기소개, 회원가입, 이벤트 목록 페이지를 확인해주세요.</p>
+
+        <div onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" style="padding: 10px; border: 1px #ccc solid;">
+            마우스를 올리면 색상이 변경됩니다.
+        </div>
+    </div>
+
+    <script>
+        function mouseOver(box) {
+            box.style.backgroundColor = 'skyblue';
+        }
+
+        function mouseOut(box) {
+            box.style.backgroundColor = '#fff';
+        }
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('우클릭이 금지되어 있습니다.');
+        });
+    </script>
+</body>
+</html>

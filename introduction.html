@@ -6,13 +6,47 @@
       <title>김민건 - 자기소개 페이지</title>
       <style>
          body {
-            background-color: rgb(240, 240, 240);
+            margin: 0;
+            background-color: #fafafa;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .header {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-         }
-
+            padding: 16px 32px;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            letter-spacing: 2px;
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            padding: 6px 14px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .menu a:hover {
+            background: #e0e0e0;
+        }
+        .main-content {
+            max-width: 700px;
+            margin: 40px auto 0 auto;
+            padding: 32px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
          .wrapper {
             padding: 16px;
             width: 500px;
@@ -51,7 +85,17 @@
       </style>
    </head>
    <body>
-      <div class="wrapper">
+      <div class="header">
+         <a href="main.html">
+            <div class="logo">김민건 소개 페이지</div>
+         </a>
+         <nav class="menu">
+             <a href="introduction.html">자기소개</a>
+             <a href="signup.html">회원가입</a>
+             <a href="event.html">이벤트목록</a>
+         </nav>
+     </div>
+      <div class="main-content">
          <div class="logo">
             <a href="https://learn.hansung.ac.kr/">
                <img
@@ -99,5 +143,11 @@
             </div>
          </div>
       </div>
+      <script>
+         document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('우클릭이 금지되어 있습니다.');
+         });
+      </script>
    </body>
 </html>

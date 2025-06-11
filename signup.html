@@ -10,19 +10,47 @@
          }
 
          body {
-            background-color: rgb(240, 240, 240);
+            margin: 0;
+            background-color: #fafafa;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .header {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-         }
-
-         .wrapper {
-            padding: 16px;
-            width: 500px;
-            background-color: white;
+            padding: 16px 32px;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            letter-spacing: 2px;
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            padding: 6px 14px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .menu a:hover {
+            background: #e0e0e0;
+        }
+        .main-content {
+            max-width: 700px;
+            margin: 40px auto 0 auto;
+            padding: 32px;
+            background: #fff;
             border-radius: 10px;
-         }
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
 
          .logo {
             display: flex;
@@ -83,7 +111,17 @@
       </style>
    </head>
    <body>
-      <div class="wrapper">
+      <div class="header">
+         <a href="main.html">
+            <div class="logo">김민건 소개 페이지</div>
+         </a>
+         <nav class="menu">
+             <a href="introduction.html">자기소개</a>
+             <a href="signup.html">회원가입</a>
+             <a href="event.html">이벤트목록</a>
+         </nav>
+     </div>
+      <div class="main-content">
          <h1>회원가입 페이지</h1>
 
          <hr>
@@ -91,29 +129,35 @@
          <form style="padding: 10px 0">
             <div>
                <h3>아이디</h3>
-               <input type="text" />
+               <input type="text" onfocus="focusInput(this)" onblur="blurInput(this)" />
             </div>
 
             <br />
 
             <div>
                <h3>패스워드</h3>
-               <input type="password" />
+               <input type="password" onfocus="focusInput(this)" onblur="blurInput(this)" />
             </div>
 
             <br />
 
             <div>
                <h3>생년월일</h3>
-               <input type="date" />
+               <input type="date" onfocus="focusInput(this)" onblur="blurInput(this)" />
             </div>
 
             <br />
 
             <div>
                <h3>성별</h3>
-               <span>남성<input type="radio" /></span>
-               <span>여성<input type="radio" /></span>
+               <span>
+                  <label>남성</label>
+                  <input type="radio" name="gender" value="남성" />
+               </span>
+               <span>
+                  <label>여성</label>
+                  <input type="radio" name="gender" value="여성" />
+               </span>
             </div>
 
             <br />
@@ -121,26 +165,80 @@
             <div>
                <h3>관심사</h3>
                <p style="font-size: 14px; color: gray">관심사를 선택해주세요.</p>
-               <span>스포츠<input type="checkbox" /></span>
-               <span>사진<input type="checkbox" /></span>
-               <span>음식<input type="checkbox" /></span>
-               <span>패션<input type="checkbox" /></span>
-               <span>독서<input type="checkbox" /></span>
-               <span>음악<input type="checkbox" /></span>
+               <span>스포츠<input type="checkbox" name="interest" value="스포츠" /></span>
+               <span>사진<input type="checkbox" name="interest" value="사진" /></span>
+               <span>음식<input type="checkbox" name="interest" value="음식" /></span>
+               <span>패션<input type="checkbox" name="interest" value="패션" /></span>
+               <span>독서<input type="checkbox" name="interest" value="독서" /></span>
+               <span>음악<input type="checkbox" name="interest" value="음악" /></span>
             </div>
 
             <br />
 
             <div>
-               <h3>사진 첨부</h3>
-               <input type="file" />
+               <h3>자기소개</h3>
+               <textarea name="introduction" rows="5" onfocus="focusInput(this)" onblur="blurInput(this)"></textarea>
             </div>
 
             <br />
 
             <input type="reset" />
-            <button>회원가입</button>
+            <button type="button" ondblclick="signup()">회원가입 (더블클릭)</button>
          </form>
       </div>
+
+      <script>
+         function focusInput(input) {
+            input.style.border = '3px solid skyblue';
+         }
+
+         function blurInput(input) {
+            input.style.border = '1px solid #ccc';
+         }
+
+         function signup() {
+            const id = document.querySelector('input[type="text"]')?.value;
+            const password = document.querySelector('input[type="password"]')?.value;
+            const birth = document.querySelector('input[type="date"]')?.value;
+            const gender = document.querySelector('input[name="gender"]:checked')?.value;
+            const interest = Array.from(document.querySelectorAll('input[name="interest"]:checked'))
+                .map(checkbox => checkbox.value)
+                .join(', ');
+            const introduction = document.querySelector('textarea[name="introduction"]')?.value;
+
+            if (!id || !password || !birth || !gender || !interest || !introduction) {
+                alert('모든 항목을 입력해주세요.');
+                return;
+            }
+
+            // Calculate age from birth date
+            const birthDate = new Date(birth);
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+const result = `
+== 회원 정보 출력 ==
+아이디: ${id}
+비밀번호: ${password}
+생년월일: ${birth}
+나이: ${age}세
+성별: ${gender}
+관심사: ${interest}
+자기소개: ${introduction}
+`;
+
+            alert(result);
+         }
+
+                 document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('우클릭이 금지되어 있습니다.');
+        });
+      </script>
    </body>
 </html>
